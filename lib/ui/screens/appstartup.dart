@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supashare/providers/auth_provider.dart';
-import 'package:supashare/ui/screens/login.dart';
 
 import '../../routes/app_router.dart';
 import '../../routes/routes.dart';
@@ -20,13 +19,6 @@ class AppStartupScreen extends HookConsumerWidget {
       },
     );
 
-    return Center(
-      child: Container(
-        color: Colors.red,
-        child: SizedBox(
-          height: 10,
-        ),
-      ),
-    );
+    return Container();
   }
 }

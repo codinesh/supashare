@@ -6,14 +6,14 @@ import 'package:supashare/providers/auth_provider.dart';
 import '../../utils/constants.dart';
 
 class LoginScreen extends HookConsumerWidget {
-  var email = useState('');
-  final emailController = useTextEditingController(text: '');
-  final passwordController = useTextEditingController(text: '');
   LoginScreen({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var email = useState('');
+    var emailController = useTextEditingController(text: '');
+    var passwordController = useTextEditingController(text: '');
     var authProvider = ref.watch(authStateProvider);
 
     return Padding(
@@ -113,7 +113,7 @@ class LoginScreen extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                authProvider.map((value) => Text(value.user?.email ?? ''),
+                authProvider.map((value) => Text(''),
                     authenticating: (a) => Text(''),
                     unauthenticated: (a) => Text(''),
                     error: (ed) => Text(
