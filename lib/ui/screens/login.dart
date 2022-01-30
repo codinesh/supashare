@@ -3,6 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supashare/providers/auth_provider.dart';
 
+import '../../utils/constants.dart';
+
 class LoginScreen extends HookConsumerWidget {
   var email = useState('');
   final emailController = useTextEditingController(text: '');
@@ -12,6 +14,8 @@ class LoginScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var authProvider = ref.watch(authStateProvider);
+
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Column(
@@ -109,6 +113,14 @@ class LoginScreen extends HookConsumerWidget {
                     ),
                   ),
                 ),
+                authProvider.map((value) => Text(value.user?.email ?? ''),
+                    authenticating: (a) => Text(''),
+                    unauthenticated: (a) => Text(''),
+                    error: (ed) => Text(
+                          ed.message ?? '',
+                          style: TextStyle(
+                              fontSize: 18, color: Constants.redColor),
+                        )),
               ],
             ),
           ),

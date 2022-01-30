@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../ui/screens/appstartup.dart';
 import '../ui/screens/forgotpassword.dart';
+import '../ui/screens/home.dart';
 import '../ui/screens/login.dart';
 import '../ui/screens/register.dart';
-import '../ui/screens/welcome.dart';
 import 'routes.dart';
 
 /// A utility class provides basic methods for navigation.
@@ -32,7 +32,7 @@ class AppRouter {
       case '/':
       case Routes.AppStartupScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => const Scaffold(body: AppStartupScreen()),
+          builder: (_) => AppStartupScreen(),
           settings: const RouteSettings(name: Routes.AppStartupScreenRoute),
         );
       case Routes.LoginScreenRoute:
@@ -42,17 +42,17 @@ class AppRouter {
         );
       case Routes.RegisterScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => const Scaffold(body: RegisterScreen()),
+          builder: (_) => RegisterScreen(),
           settings: const RouteSettings(name: Routes.RegisterScreenRoute),
         );
       case Routes.ForgotPasswordScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => const Scaffold(body: ForgotPasswordScreen()),
+          builder: (_) => ForgotPasswordScreen(),
           settings: const RouteSettings(name: Routes.ForgotPasswordScreenRoute),
         );
       case Routes.WelcomeScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => const Scaffold(body: WelcomeScreen()),
+          builder: (_) => WelcomeScreen(),
           settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
         );
       default:

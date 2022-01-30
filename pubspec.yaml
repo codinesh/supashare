@@ -30,10 +30,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_secure_storage: ^5.0.2
   freezed_annotation: ^1.1.0
   google_fonts: ^2.2.0
   hooks_riverpod: ^1.0.3
   json_serializable: ^6.1.4
+  shared_preferences: ^2.0.12
   state_notifier: ^0.7.2+1
   supabase_flutter: ^0.2.11
 

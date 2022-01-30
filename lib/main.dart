@@ -3,10 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'routes/app_router.dart';
+import 'services/local_storage/key_value_storage_base.dart';
 import 'utils/custom_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await KeyValueStorageBase.init();
 
   await Supabase.initialize(
       url: 'https://dodbjstswbfavxtnmmqi.supabase.co',
