@@ -5,8 +5,8 @@ import 'package:supashare/utils/constants.dart';
 
 import '../../providers/auth_provider.dart';
 
-class WelcomeScreen extends HookConsumerWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends HookConsumerWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,6 +14,7 @@ class WelcomeScreen extends HookConsumerWidget {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text(
           'Welcome',

@@ -28,12 +28,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Supashare',
-      onGenerateRoute: AppRouter.generateRoute,
-      navigatorKey: AppRouter.navigatorKey,
       debugShowCheckedModeBanner: false,
+      navigatorKey: AppRouter.navigatorKey,
       theme: CustomTheme.mainTheme,
       darkTheme: CustomTheme.mainTheme,
       initialRoute: AppRouter.initialRoute,
+      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }

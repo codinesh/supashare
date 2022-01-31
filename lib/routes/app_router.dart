@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../ui/screens/appstartup.dart';
 import '../ui/screens/forgotpassword.dart';
 import '../ui/screens/home.dart';
+import '../ui/screens/layout.dart';
 import '../ui/screens/login.dart';
 import '../ui/screens/register.dart';
 import 'routes.dart';
@@ -30,29 +31,30 @@ class AppRouter {
     // final args = settings.arguments;
     switch (settings.name) {
       case '/':
+        return null;
       case Routes.AppStartupScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => AppStartupScreen(),
+          builder: (_) => Layout(child: AppStartupScreen()),
           settings: const RouteSettings(name: Routes.AppStartupScreenRoute),
         );
       case Routes.LoginScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => Scaffold(body: LoginScreen()),
+          builder: (_) => Layout(child: Scaffold(body: LoginScreen())),
           settings: const RouteSettings(name: Routes.LoginScreenRoute),
         );
       case Routes.RegisterScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => RegisterScreen(),
+          builder: (_) => Layout(child: RegisterScreen()),
           settings: const RouteSettings(name: Routes.RegisterScreenRoute),
         );
       case Routes.ForgotPasswordScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => ForgotPasswordScreen(),
+          builder: (_) => Layout(child: ForgotPasswordScreen()),
           settings: const RouteSettings(name: Routes.ForgotPasswordScreenRoute),
         );
       case Routes.WelcomeScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => WelcomeScreen(),
+          builder: (_) => Layout(child: HomeScreen()),
           settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
         );
       default:
