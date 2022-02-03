@@ -18,7 +18,7 @@ final subscriptions = [
       id: 'prime',
       name: 'prime',
       frequency: Frequency.year,
-      color: Colors.yellow,
+      color: Color.fromARGB(226, 224, 123, 8),
       owner: 'Dinesh',
       price: 1000.0,
       description: 'Netflix',
@@ -26,7 +26,7 @@ final subscriptions = [
   Subscription(
       id: 'hotstar',
       name: 'Hotstar',
-      color: Colors.blue,
+      color: Color.fromRGBO(4, 143, 112, 0),
       owner: 'Dinesh',
       price: 1200.0,
       description: 'Netflix',
@@ -71,14 +71,17 @@ class HomeScreen extends HookConsumerWidget {
           ),
           SizedBox(height: 14),
           Expanded(
-              child: ListView.separated(
-                  itemBuilder: (a, b) {
-                    return SubscriptionCard(subscriptions[b]);
-                  },
-                  separatorBuilder: (a, b) {
-                    return SizedBox(height: 10);
-                  },
-                  itemCount: subscriptions.length))
+              child: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: ListView.separated(
+                itemBuilder: (a, b) {
+                  return SubscriptionCard(subscriptions[b]);
+                },
+                separatorBuilder: (a, b) {
+                  return SizedBox(height: 10);
+                },
+                itemCount: subscriptions.length),
+          ))
         ],
       ),
     );

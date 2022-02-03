@@ -19,6 +19,9 @@ class Routes {
   /// The name of the route for home screen.
   static const String RegisterScreenRoute = '/register-screen';
 
+  /// The name of the route for theater map screen.
+  static const String SubscriptionDetailScreenRoute = '/subscription-detail';
+
   /// The name of the route for login screen.
   static const String ForgotPasswordScreenRoute = '/forgot-password-screen';
 

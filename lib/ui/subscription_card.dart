@@ -1,8 +1,9 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:supashare/routes/routes.dart';
 
+import '../routes/app_router.dart';
 import '../utils/constants.dart';
 
 enum Frequency { year, month, quarter }
@@ -41,7 +42,8 @@ class SubscriptionCard extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(28),
       onTap: () {
-        Navigator.pushNamed(context, '/profile');
+        AppRouter.pushNamed(Routes.SubscriptionDetailScreenRoute,
+            args: subscription);
       },
       child: Container(
         child: Padding(
@@ -129,6 +131,11 @@ class SubscriptionCard extends StatelessWidget {
         ),
         height: 180,
         decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(subscription.image),
+              opacity: 0.051,
+              scale: 3,
+              repeat: ImageRepeat.repeat),
           borderRadius: BorderRadius.circular(28),
           color: Constants.primaryColor.withOpacity(0.5),
         ),

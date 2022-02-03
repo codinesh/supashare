@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../routes/app_router.dart';
+import '../../routes/routes.dart';
+
 class Layout extends HookConsumerWidget {
   Widget child;
   Layout({required this.child, Key? key}) : super(key: key);
@@ -98,6 +101,7 @@ class Layout extends HookConsumerWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.transparent,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -113,7 +117,20 @@ class Layout extends HookConsumerWidget {
           ),
         ],
         onTap: (index) {
-          print(index);
+          switch (index) {
+            case 0:
+              AppRouter.popUntilRoot();
+              break;
+            case 1:
+              AppRouter.pushNamed('/mysubscriptions');
+              break;
+            case 2:
+              AppRouter.pushNamed('/mysubscriptions');
+              break;
+            default:
+              AppRouter.popUntilRoot();
+              break;
+          }
         },
       ),
       // appBar: AppBar(
@@ -121,7 +138,7 @@ class Layout extends HookConsumerWidget {
       //   elevation: 0,
       //   title: Text('Hello'),
       // ),
-      body: Container(width: double.infinity, child: child),
+      body: child,
     ));
   }
 }

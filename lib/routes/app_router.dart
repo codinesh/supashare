@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 import 'package:flutter/material.dart';
+import 'package:supashare/ui/screens/subscriptiondetails.dart';
 
 import '../ui/screens/appstartup.dart';
 import '../ui/screens/forgotpassword.dart';
@@ -7,6 +8,7 @@ import '../ui/screens/home.dart';
 import '../ui/screens/layout.dart';
 import '../ui/screens/login.dart';
 import '../ui/screens/register.dart';
+import '../ui/subscription_card.dart';
 import 'routes.dart';
 
 /// A utility class provides basic methods for navigation.
@@ -57,21 +59,37 @@ class AppRouter {
           builder: (_) => Layout(child: HomeScreen()),
           settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
         );
+      case Routes.SubscriptionDetailScreenRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => Layout(
+              child: SubscriptionDetail(settings.arguments as Subscription)),
+          settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
+        );
+
       default:
-        return _errorRoute();
+        return _errorRoute(settings.name ?? '/');
     }
   }
 
   /// This method returns an error page to indicate redirection to an
   /// unknown route.
-  static Route<dynamic> _errorRoute() {
+  static Route<dynamic> _errorRoute(String name) {
     return MaterialPageRoute<dynamic>(
-      builder: (_) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Unknown Route'),
-        ),
-        body: const Center(
-          child: Text('Unknown Route'),
+      builder: (_) => Layout(
+        child: Center(
+          child: RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              text: 'Error: Could not find route: ',
+              style: TextStyle(fontSize: 22, color: Colors.red),
+              children: [
+                TextSpan(
+                  text: name,
+                  style: TextStyle(fontSize: 22),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
