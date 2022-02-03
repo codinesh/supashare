@@ -97,11 +97,30 @@ class Layout extends HookConsumerWidget {
           ],
         ),
       ),
-      appBar: AppBar(
-        shadowColor: Colors.transparent,
-        elevation: 0,
-        title: Text('Hello'),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        onTap: (index) {
+          print(index);
+        },
       ),
+      // appBar: AppBar(
+      //   shadowColor: Colors.transparent,
+      //   elevation: 0,
+      //   title: Text('Hello'),
+      // ),
       body: Container(width: double.infinity, child: child),
     ));
   }
