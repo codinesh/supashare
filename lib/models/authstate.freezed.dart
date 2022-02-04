@@ -18,10 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
-  Data call({User? user, Session? session}) {
+  Data call({User? user}) {
     return Data(
       user: user,
-      session: session,
     );
   }
 
@@ -47,7 +46,7 @@ const $AuthState = _$AuthStateTearOff();
 mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(User? user, Session? session) $default, {
+    TResult Function(User? user) $default, {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function(String? message) error,
@@ -55,7 +54,7 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
@@ -63,7 +62,7 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
@@ -116,7 +115,7 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
-  $Res call({User? user, Session? session});
+  $Res call({User? user});
 }
 
 /// @nodoc
@@ -131,17 +130,12 @@ class _$DataCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
-    Object? session = freezed,
   }) {
     return _then(Data(
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      session: session == freezed
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as Session?,
     ));
   }
 }
@@ -149,16 +143,14 @@ class _$DataCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Data implements Data {
-  const _$Data({this.user, this.session});
+  const _$Data({this.user});
 
   @override
   final User? user;
-  @override
-  final Session? session;
 
   @override
   String toString() {
-    return 'AuthState(user: $user, session: $session)';
+    return 'AuthState(user: $user)';
   }
 
   @override
@@ -166,15 +158,12 @@ class _$Data implements Data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is Data &&
-            const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality().equals(other.session, session));
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(session));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -184,36 +173,36 @@ class _$Data implements Data {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(User? user, Session? session) $default, {
+    TResult Function(User? user) $default, {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function(String? message) error,
   }) {
-    return $default(user, session);
+    return $default(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
   }) {
-    return $default?.call(user, session);
+    return $default?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(user, session);
+      return $default(user);
     }
     return orElse();
   }
@@ -257,10 +246,9 @@ class _$Data implements Data {
 }
 
 abstract class Data implements AuthState {
-  const factory Data({User? user, Session? session}) = _$Data;
+  const factory Data({User? user}) = _$Data;
 
   User? get user;
-  Session? get session;
   @JsonKey(ignore: true)
   $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
 }
@@ -305,7 +293,7 @@ class _$Authenticating implements Authenticating {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(User? user, Session? session) $default, {
+    TResult Function(User? user) $default, {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function(String? message) error,
@@ -316,7 +304,7 @@ class _$Authenticating implements Authenticating {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
@@ -327,7 +315,7 @@ class _$Authenticating implements Authenticating {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
@@ -421,7 +409,7 @@ class _$UnAuthenticated implements UnAuthenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(User? user, Session? session) $default, {
+    TResult Function(User? user) $default, {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function(String? message) error,
@@ -432,7 +420,7 @@ class _$UnAuthenticated implements UnAuthenticated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
@@ -443,7 +431,7 @@ class _$UnAuthenticated implements UnAuthenticated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
@@ -561,7 +549,7 @@ class _$ErrorDetails implements ErrorDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(User? user, Session? session) $default, {
+    TResult Function(User? user) $default, {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function(String? message) error,
@@ -572,7 +560,7 @@ class _$ErrorDetails implements ErrorDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,
@@ -583,7 +571,7 @@ class _$ErrorDetails implements ErrorDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(User? user, Session? session)? $default, {
+    TResult Function(User? user)? $default, {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function(String? message)? error,

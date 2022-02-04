@@ -11,7 +11,6 @@ class LoginScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var email = useState('');
     var emailController = useTextEditingController(text: '');
     var passwordController = useTextEditingController(text: '');
     var authProvider = ref.watch(authStateProvider);
@@ -49,7 +48,7 @@ class LoginScreen extends HookConsumerWidget {
                   obscureText: true,
                   obscuringCharacter: '•',
                   controller: passwordController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.password_rounded),
                     hintText: 'Enter password',
@@ -72,8 +71,7 @@ class LoginScreen extends HookConsumerWidget {
                         // the form is invalid.
                         if (_formKey.currentState!.validate()) {
                           // Process data.
-                          await ref.read(authStateProvider.notifier).login(
-                              emailController.text, passwordController.text);
+                          await ref.read(authStateProvider.notifier).login(emailController.text, passwordController.text);
                         }
                       },
                       child: const Text('Sign in'),
@@ -91,8 +89,7 @@ class LoginScreen extends HookConsumerWidget {
                         // the form is invalid.
                         if (_formKey.currentState!.validate()) {
                           // Process data.
-                          await ref.read(authStateProvider.notifier).signup(
-                              emailController.text, passwordController.text);
+                          await ref.read(authStateProvider.notifier).signup(emailController.text, passwordController.text);
                         }
                       },
                       child: const Text('Sign up'),
@@ -113,13 +110,12 @@ class LoginScreen extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                authProvider.map((value) => Text(''),
-                    authenticating: (a) => Text(''),
-                    unauthenticated: (a) => Text(''),
+                authProvider.map((value) => const Text(''),
+                    authenticating: (a) => const Text(''),
+                    unauthenticated: (a) => const Text(''),
                     error: (ed) => Text(
                           ed.message ?? '',
-                          style: TextStyle(
-                              fontSize: 18, color: Constants.redColor),
+                          style: const TextStyle(fontSize: 18, color: Constants.redColor),
                         )),
               ],
             ),

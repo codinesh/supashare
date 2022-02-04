@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:supashare/ui/screens/subscriptiondetails.dart';
 
+import '../models/subscription.dart';
 import '../ui/screens/appstartup.dart';
 import '../ui/screens/forgotpassword.dart';
 import '../ui/screens/home.dart';
 import '../ui/screens/layout.dart';
 import '../ui/screens/login.dart';
 import '../ui/screens/register.dart';
-import '../ui/subscription_card.dart';
 import 'routes.dart';
 
 /// A utility class provides basic methods for navigation.
@@ -18,8 +18,7 @@ class AppRouter {
   const AppRouter._();
 
   /// The global key used to access navigator without context
-  static final GlobalKey<NavigatorState> navigatorKey =
-      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   /// The name of the route that loads on app startup
   static const String initialRoute = Routes.AppStartupScreenRoute;
@@ -36,7 +35,7 @@ class AppRouter {
         return null;
       case Routes.AppStartupScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => Layout(child: AppStartupScreen()),
+          builder: (_) => Layout(child: const AppStartupScreen()),
           settings: const RouteSettings(name: Routes.AppStartupScreenRoute),
         );
       case Routes.LoginScreenRoute:
@@ -46,23 +45,22 @@ class AppRouter {
         );
       case Routes.RegisterScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => Layout(child: RegisterScreen()),
+          builder: (_) => Layout(child: const RegisterScreen()),
           settings: const RouteSettings(name: Routes.RegisterScreenRoute),
         );
       case Routes.ForgotPasswordScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => Layout(child: ForgotPasswordScreen()),
+          builder: (_) => Layout(child: const ForgotPasswordScreen()),
           settings: const RouteSettings(name: Routes.ForgotPasswordScreenRoute),
         );
       case Routes.WelcomeScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => Layout(child: HomeScreen()),
+          builder: (_) => Layout(child: const HomeScreen()),
           settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
         );
       case Routes.SubscriptionDetailScreenRoute:
         return MaterialPageRoute<dynamic>(
-          builder: (_) => Layout(
-              child: SubscriptionDetail(settings.arguments as Subscription)),
+          builder: (_) => Layout(child: SubscriptionDetail(settings.arguments as Subscription)),
           settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
         );
 
@@ -81,11 +79,11 @@ class AppRouter {
             textAlign: TextAlign.center,
             text: TextSpan(
               text: 'Error: Could not find route: ',
-              style: TextStyle(fontSize: 22, color: Colors.red),
+              style: const TextStyle(fontSize: 22, color: Colors.red),
               children: [
                 TextSpan(
                   text: name,
-                  style: TextStyle(fontSize: 22),
+                  style: const TextStyle(fontSize: 22),
                 ),
               ],
             ),

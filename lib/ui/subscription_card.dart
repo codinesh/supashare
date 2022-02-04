@@ -3,33 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:supashare/routes/routes.dart';
 
+import '../models/subscription.dart';
 import '../routes/app_router.dart';
 import '../utils/constants.dart';
-
-enum Frequency { year, month, quarter }
-
-class Subscription {
-  String id;
-  String name;
-  Color color;
-  String owner;
-  Frequency frequency = Frequency.month;
-  double price;
-  String description;
-
-  String image;
-
-  Subscription({
-    required this.id,
-    required this.name,
-    required this.color,
-    required this.owner,
-    required this.price,
-    required this.description,
-    required this.image,
-    this.frequency = Frequency.month,
-  });
-}
 
 class SubscriptionCard extends StatelessWidget {
   Subscription subscription;
@@ -39,11 +15,11 @@ class SubscriptionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brandColor = Color(subscription.color);
     return InkWell(
       borderRadius: BorderRadius.circular(28),
       onTap: () {
-        AppRouter.pushNamed(Routes.SubscriptionDetailScreenRoute,
-            args: subscription);
+        AppRouter.pushNamed(Routes.SubscriptionDetailScreenRoute, args: subscription);
       },
       child: Container(
         child: Padding(
@@ -70,15 +46,18 @@ class SubscriptionCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(subscription.name,
-                            style: TextStyle(
-                                fontSize: 32, color: subscription.color)),
-                        SizedBox(
+                        Text(
+                          subscription.name,
+                          style: TextStyle(
+                            fontSize: 32,
+                            color: brandColor,
+                          ),
+                        ),
+                        const SizedBox(
                           height: 4,
                         ),
-                        Text(subscription.owner,
-                            style: TextStyle(fontSize: 18)),
-                        SizedBox(
+                        Text(subscription.owner, style: const TextStyle(fontSize: 18)),
+                        const SizedBox(
                           height: 10,
                         ),
                         RichText(
@@ -86,14 +65,12 @@ class SubscriptionCard extends StatelessWidget {
                             text: '₹' + subscription.price.toStringAsFixed(2),
                             style: TextStyle(
                               fontSize: 24,
-                              color: subscription.color,
+                              color: brandColor,
                             ),
                             children: [
                               TextSpan(
                                 text: ' / ' + subscription.frequency.name,
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    color: Constants.textGreyColor),
+                                style: const TextStyle(fontSize: 18, color: Constants.textGreyColor),
                               ),
                             ],
                           ),
@@ -109,15 +86,14 @@ class SubscriptionCard extends StatelessWidget {
                         children: [
                           CircularProgressIndicator(
                             value: rand / 100,
-                            color: subscription.color,
-                            backgroundColor:
-                                subscription.color.withOpacity(0.4),
+                            color: brandColor,
+                            backgroundColor: brandColor.withOpacity(0.4),
                           ),
                           Align(
                             alignment: Alignment.center,
                             child: Text(
                               rand.toString() + '%',
-                              style: TextStyle(fontSize: 32),
+                              style: const TextStyle(fontSize: 32),
                             ),
                           )
                         ],
@@ -131,11 +107,7 @@ class SubscriptionCard extends StatelessWidget {
         ),
         height: 180,
         decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(subscription.image),
-              opacity: 0.051,
-              scale: 3,
-              repeat: ImageRepeat.repeat),
+          image: DecorationImage(image: AssetImage(subscription.image), opacity: 0.051, scale: 3, repeat: ImageRepeat.repeat),
           borderRadius: BorderRadius.circular(28),
           color: Constants.primaryColor.withOpacity(0.5),
         ),

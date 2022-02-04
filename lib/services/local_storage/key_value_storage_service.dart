@@ -57,8 +57,7 @@ class KeyValueStorageService {
   /// use `await` and let it execute in the background.
   void setAuthState(AuthState authState) {
     authState.when(
-        (user, session) =>
-            _keyValueStorage.setCommon<bool>(_authStateKey, true),
+        (user) => _keyValueStorage.setCommon<bool>(_authStateKey, true),
         authenticating: () =>
             _keyValueStorage.setCommon<bool>(_authStateKey, false),
         unauthenticated: () =>

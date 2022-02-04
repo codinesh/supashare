@@ -132,15 +132,13 @@ class Constants {
   static RegExp zipCodeRegex = RegExp(r'^\d{5}$');
 
   /// The regular expression for validating credit card numbers in the app.
-  static RegExp creditCardNumberRegex =
-      RegExp(r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$');
+  static RegExp creditCardNumberRegex = RegExp(r'^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$');
 
   /// The regular expression for validating credit card CVV in the app.
   static RegExp creditCardCVVRegex = RegExp(r'^[0-9]{3}$');
 
   /// The regular expression for validating credit card expiry in the app.
-  static RegExp creditCardExpiryRegex =
-      RegExp(r'(0[1-9]|10|11|12)/20[0-9]{2}$');
+  static RegExp creditCardExpiryRegex = RegExp(r'(0[1-9]|10|11|12)/20[0-9]{2}$');
 
   /// The regular expression for validating credit card expiry in the app.
   static final RegExp otpDigitRegex = RegExp('^[0-9]{1}\$');
@@ -188,10 +186,16 @@ class Constants {
   static const invalidCreditCardCVVError = 'Please enter a valid CVV';
 
   /// The error message for invalid credit card expiry input.
-  static const invalidCreditCardExpiryError =
-      'Please enter a valid expiry date';
+  static const invalidCreditCardExpiryError = 'Please enter a valid expiry date';
 
   static T? toNull<T>(Object? _) => null;
+
+  // final subscriptions = [
+  //   Subscription(id: 'netflix', name: 'Netflix', color: 0xe50814, owner: 'Dinesh', price: 800.0, description: 'Netflix', image: 'assets/netflix.webp'),
+  //   Subscription(id: 'prime', name: 'prime', frequency: Frequency.year, color: 0xfe9900, owner: 'Dinesh', price: 1000.0, description: 'Netflix', image: 'assets/amazon.png'),
+  //   Subscription(id: 'hotstar', name: 'Hotstar', color: 0x0a0e33, owner: 'Dinesh', price: 1200.0, description: 'Netflix', image: 'assets/hotstar.svg'),
+  //   Subscription(id: 'zee5', name: 'Zee 5', color: 0x8230c6, owner: 'Dinesh', price: 250.0, description: 'Netflix', image: 'assets/zee5.png'),
+  // ];
 }
 
 extension ShowSnackBar on BuildContext {

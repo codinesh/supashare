@@ -13,7 +13,7 @@ class AppStartupScreen extends HookConsumerWidget {
 
     return Container(
       child: authprovider.when(
-        (_, __) => const HomeScreen(),
+        (_) => const HomeScreen(),
         authenticating: () => Container(
           color: Colors.blue,
           child: const CircularProgressIndicator(),

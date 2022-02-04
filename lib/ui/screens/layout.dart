@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../routes/app_router.dart';
-import '../../routes/routes.dart';
 
 class Layout extends HookConsumerWidget {
   Widget child;
@@ -18,17 +17,12 @@ class Layout extends HookConsumerWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/headerbackground.jpg'),
-                    fit: BoxFit.fill),
+                image: DecorationImage(image: AssetImage('assets/headerbackground.jpg'), fit: BoxFit.fill),
                 color: Colors.blueGrey,
               ),
               child: Text(
                 'Supashare',
-                style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.blueGrey, fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
             Expanded(
@@ -46,7 +40,7 @@ class Layout extends HookConsumerWidget {
                       fontSize: 18,
                     ),
                   ),
-                  leading: Icon(Icons.account_balance_outlined),
+                  leading: const Icon(Icons.account_balance_outlined),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -74,18 +68,17 @@ class Layout extends HookConsumerWidget {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  title: Text('Logout'),
-                                  content:
-                                      Text('Are you sure you want to logout?'),
+                                  title: const Text('Logout'),
+                                  content: const Text('Are you sure you want to logout?'),
                                   actions: [
                                     ElevatedButton(
-                                      child: Text('Yes'),
+                                      child: const Text('Yes'),
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
                                     ),
                                     ElevatedButton(
-                                      child: Text('No'),
+                                      child: const Text('No'),
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
@@ -94,7 +87,7 @@ class Layout extends HookConsumerWidget {
                                 );
                               });
                         },
-                        icon: Icon(Icons.logout)),
+                        icon: const Icon(Icons.logout)),
                   ],
                 ))
           ],
