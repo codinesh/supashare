@@ -26,8 +26,8 @@ class HomeScreen extends HookConsumerWidget {
           ),
           const SizedBox(height: 8),
           const Text(
-            'Welcome back!',
-            style: TextStyle(fontSize: 18, color: Constants.textGreyColor),
+            'All Subscriptions',
+            style: TextStyle(fontSize: 22, color: Constants.textGreyColor),
           ),
           const SizedBox(
             height: 10,

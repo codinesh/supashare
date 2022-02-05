@@ -17,6 +17,11 @@ class ProviderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final brandColor = getColorFromString(subscriptionProvider.color);
+    var availableSlots = subscriptionProvider.maxSubscribers - (subscriptionProvider.subscriptions?.length ?? 0);
+    var owner = subscriptionProvider.subscriptions.length > 0
+        ? subscriptionProvider.subscriptions.firstWhere((subscription) => true)
+        : null;
+
     return InkWell(
       borderRadius: BorderRadius.circular(28),
       onTap: () {
@@ -43,40 +48,59 @@ class ProviderCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          subscriptionProvider.name,
-                          style: TextStyle(
-                            fontSize: 32,
-                            color: brandColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        Text(subscriptionProvider.name, style: const TextStyle(fontSize: 18)),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            text: '₹' + subscriptionProvider.price.toStringAsFixed(2),
+                    Container(
+                      width: MediaQuery.of(context).size.width - 250,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            subscriptionProvider.name,
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 32,
                               color: brandColor,
                             ),
-                            children: [
-                              TextSpan(
-                                text: ' / ' + subscriptionProvider.frequency.name,
-                                style: const TextStyle(fontSize: 18, color: Constants.textGreyColor),
-                              ),
-                            ],
                           ),
-                        ),
-                      ],
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            'by ' + (owner?.subscriberId.substring(0, 24) ?? ''),
+                            style: const TextStyle(fontSize: 18),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              text: '₹' + subscriptionProvider.price.toStringAsFixed(2),
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: brandColor,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: ' / ' + subscriptionProvider.frequency.name,
+                                  style: const TextStyle(fontSize: 18, color: Constants.textGreyColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              text: (availableSlots > 0 ? availableSlots.toString() + ' slots available' : 'No slots'),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Constants.textGreyColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     if (MediaQuery.of(context).size.width > 400)
                       Container(
@@ -93,11 +117,20 @@ class ProviderCard extends StatelessWidget {
                             ),
                             Align(
                               alignment: Alignment.center,
-                              child: Text(
-                                rand.toString() + '%',
-                                style: const TextStyle(fontSize: 32),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    rand.toString() + '%',
+                                    style: const TextStyle(fontSize: 32),
+                                  ),
+                                  const Text(
+                                    'settled',
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
