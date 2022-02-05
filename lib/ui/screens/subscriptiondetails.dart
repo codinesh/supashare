@@ -9,23 +9,28 @@ class SubscriptionDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(image: DecorationImage(image: AssetImage(subscription.image), opacity: 0.1, fit: BoxFit.scaleDown, repeat: ImageRepeat.repeat)),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(subscription.provider!.logo),
+              opacity: 0.1,
+              fit: BoxFit.scaleDown,
+              repeat: ImageRepeat.repeat)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            subscription.image,
+            subscription.provider!.logo,
             alignment: Alignment.center,
           ),
           const SizedBox(
             height: 40,
           ),
           Text(
-            subscription.name,
+            subscription.provider!.name,
             style: const TextStyle(fontSize: 42),
           ),
           Text(
-            subscription.owner,
+            subscription.provider!.name,
             style: const TextStyle(fontSize: 22),
           ),
           const SizedBox(
@@ -33,9 +38,11 @@ class SubscriptionDetail extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(
-              text: '₹ ' + subscription.price.toStringAsFixed(0),
+              text: '₹ ' + subscription.provider!.price.toStringAsFixed(0),
               style: const TextStyle(fontSize: 28),
-              children: [TextSpan(text: ' /' + subscription.frequency.name, style: const TextStyle(fontSize: 18))],
+              children: [
+                TextSpan(text: ' /' + subscription.provider!.frequency.name, style: const TextStyle(fontSize: 18))
+              ],
             ),
           ),
           const SizedBox(

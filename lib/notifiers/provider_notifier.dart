@@ -11,7 +11,7 @@ class ProviderNotifier extends StateNotifier<List<SubscriptionProvider>> {
   Future<void> _loadSubscriptionProviders() async {
     var response = await supabase.from('Providers').select().execute();
     if (response.error == null) {
-      var subscriptions = response.data as List<Map<String, dynamic>>;
+      var subscriptions = List<Map<String, dynamic>>.from(response.data);
       state = subscriptions.map((subscription) => SubscriptionProvider.fromJson(subscription)).toList();
     }
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:supashare/providers/auth_provider.dart';
 import '../../routes/app_router.dart';
 
 class Layout extends HookConsumerWidget {
@@ -73,7 +73,8 @@ class Layout extends HookConsumerWidget {
                                   actions: [
                                     ElevatedButton(
                                       child: const Text('Yes'),
-                                      onPressed: () {
+                                      onPressed: () async {
+                                        ref.read(authStateProvider.notifier).logout();
                                         Navigator.pop(context);
                                       },
                                     ),
@@ -101,8 +102,8 @@ class Layout extends HookConsumerWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.list),
+            label: 'Providers',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -115,7 +116,7 @@ class Layout extends HookConsumerWidget {
               AppRouter.popUntilRoot();
               break;
             case 1:
-              AppRouter.pushNamed('/mysubscriptions');
+              AppRouter.pushNamed('/providers');
               break;
             case 2:
               AppRouter.pushNamed('/mysubscriptions');

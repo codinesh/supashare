@@ -6,30 +6,27 @@ part of 'subscription_provider.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SubscriptionProvider _$$_SubscriptionProviderFromJson(
-        Map<String, dynamic> json) =>
-    _$_SubscriptionProvider(
-      id: json['id'] as String,
+_$_SubscriptionProvider _$$_SubscriptionProviderFromJson(Map<String, dynamic> json) => _$_SubscriptionProvider(
+      id: json['id'] as int,
       name: json['name'] as String,
-      color: json['color'] as int,
-      owner: json['owner'] as String,
+      color: json['brand_color'] as int,
+      maxSubscribers: json['max_subscribers'] as int,
       price: (json['price'] as num).toDouble(),
-      description: json['description'] as String,
-      image: json['image'] as String,
-      frequency: $enumDecodeNullable(_$FrequencyEnumMap, json['frequency']) ??
-          Frequency.month,
+      description: json['description'] as String?,
+      logo: json['logo_url'] as String,
+      createdAt: json['created_at'] == null ? null : DateTime.parse(json['created_at'] as String),
+      frequency: $enumDecodeNullable(_$FrequencyEnumMap, json['frequency']) ?? Frequency.month,
     );
 
-Map<String, dynamic> _$$_SubscriptionProviderToJson(
-        _$_SubscriptionProvider instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_SubscriptionProviderToJson(_$_SubscriptionProvider instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'color': instance.color,
-      'owner': instance.owner,
+      'brand_color': instance.color,
+      'max_subscribers': instance.maxSubscribers,
       'price': instance.price,
       'description': instance.description,
-      'image': instance.image,
+      'logo_url': instance.logo,
+      'created_at': instance.createdAt?.toIso8601String(),
       'frequency': _$FrequencyEnumMap[instance.frequency],
     };
 

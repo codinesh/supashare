@@ -24,24 +24,16 @@ class _$SubscriptionTearOff {
 
   _Subscription call(
       {required int id,
-      required int provider_id,
-      required String name,
-      required int color,
-      required String owner,
-      required double price,
-      required String description,
-      required String image,
-      Frequency frequency = Frequency.month}) {
+      @JsonKey(name: 'provider_id') required int providerId,
+      @JsonKey(name: 'start_date') required DateTime startDate,
+      @JsonKey(ignore: true) SubscriptionProvider? provider,
+      @JsonKey(name: 'user_id') required String subscriberId}) {
     return _Subscription(
       id: id,
-      provider_id: provider_id,
-      name: name,
-      color: color,
-      owner: owner,
-      price: price,
-      description: description,
-      image: image,
-      frequency: frequency,
+      providerId: providerId,
+      startDate: startDate,
+      provider: provider,
+      subscriberId: subscriberId,
     );
   }
 
@@ -56,16 +48,14 @@ const $Subscription = _$SubscriptionTearOff();
 /// @nodoc
 mixin _$Subscription {
   int get id => throw _privateConstructorUsedError;
-  int get provider_id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-
-  /// brand color in hex
-  int get color => throw _privateConstructorUsedError;
-  String get owner => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  Frequency get frequency => throw _privateConstructorUsedError;
+  @JsonKey(name: 'provider_id')
+  int get providerId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'start_date')
+  DateTime get startDate => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  SubscriptionProvider? get provider => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id')
+  String get subscriberId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -80,14 +70,12 @@ abstract class $SubscriptionCopyWith<$Res> {
       _$SubscriptionCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      int provider_id,
-      String name,
-      int color,
-      String owner,
-      double price,
-      String description,
-      String image,
-      Frequency frequency});
+      @JsonKey(name: 'provider_id') int providerId,
+      @JsonKey(name: 'start_date') DateTime startDate,
+      @JsonKey(ignore: true) SubscriptionProvider? provider,
+      @JsonKey(name: 'user_id') String subscriberId});
+
+  $SubscriptionProviderCopyWith<$Res>? get provider;
 }
 
 /// @nodoc
@@ -101,53 +89,44 @@ class _$SubscriptionCopyWithImpl<$Res> implements $SubscriptionCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? provider_id = freezed,
-    Object? name = freezed,
-    Object? color = freezed,
-    Object? owner = freezed,
-    Object? price = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? frequency = freezed,
+    Object? providerId = freezed,
+    Object? startDate = freezed,
+    Object? provider = freezed,
+    Object? subscriberId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      provider_id: provider_id == freezed
-          ? _value.provider_id
-          : provider_id // ignore: cast_nullable_to_non_nullable
+      providerId: providerId == freezed
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      provider: provider == freezed
+          ? _value.provider
+          : provider // ignore: cast_nullable_to_non_nullable
+              as SubscriptionProvider?,
+      subscriberId: subscriberId == freezed
+          ? _value.subscriberId
+          : subscriberId // ignore: cast_nullable_to_non_nullable
               as String,
-      color: color == freezed
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as int,
-      owner: owner == freezed
-          ? _value.owner
-          : owner // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: price == freezed
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      frequency: frequency == freezed
-          ? _value.frequency
-          : frequency // ignore: cast_nullable_to_non_nullable
-              as Frequency,
     ));
+  }
+
+  @override
+  $SubscriptionProviderCopyWith<$Res>? get provider {
+    if (_value.provider == null) {
+      return null;
+    }
+
+    return $SubscriptionProviderCopyWith<$Res>(_value.provider!, (value) {
+      return _then(_value.copyWith(provider: value));
+    });
   }
 }
 
@@ -160,14 +139,13 @@ abstract class _$SubscriptionCopyWith<$Res>
   @override
   $Res call(
       {int id,
-      int provider_id,
-      String name,
-      int color,
-      String owner,
-      double price,
-      String description,
-      String image,
-      Frequency frequency});
+      @JsonKey(name: 'provider_id') int providerId,
+      @JsonKey(name: 'start_date') DateTime startDate,
+      @JsonKey(ignore: true) SubscriptionProvider? provider,
+      @JsonKey(name: 'user_id') String subscriberId});
+
+  @override
+  $SubscriptionProviderCopyWith<$Res>? get provider;
 }
 
 /// @nodoc
@@ -183,52 +161,32 @@ class __$SubscriptionCopyWithImpl<$Res> extends _$SubscriptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? provider_id = freezed,
-    Object? name = freezed,
-    Object? color = freezed,
-    Object? owner = freezed,
-    Object? price = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? frequency = freezed,
+    Object? providerId = freezed,
+    Object? startDate = freezed,
+    Object? provider = freezed,
+    Object? subscriberId = freezed,
   }) {
     return _then(_Subscription(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      provider_id: provider_id == freezed
-          ? _value.provider_id
-          : provider_id // ignore: cast_nullable_to_non_nullable
+      providerId: providerId == freezed
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      provider: provider == freezed
+          ? _value.provider
+          : provider // ignore: cast_nullable_to_non_nullable
+              as SubscriptionProvider?,
+      subscriberId: subscriberId == freezed
+          ? _value.subscriberId
+          : subscriberId // ignore: cast_nullable_to_non_nullable
               as String,
-      color: color == freezed
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as int,
-      owner: owner == freezed
-          ? _value.owner
-          : owner // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: price == freezed
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      frequency: frequency == freezed
-          ? _value.frequency
-          : frequency // ignore: cast_nullable_to_non_nullable
-              as Frequency,
     ));
   }
 }
@@ -238,14 +196,10 @@ class __$SubscriptionCopyWithImpl<$Res> extends _$SubscriptionCopyWithImpl<$Res>
 class _$_Subscription implements _Subscription {
   const _$_Subscription(
       {required this.id,
-      required this.provider_id,
-      required this.name,
-      required this.color,
-      required this.owner,
-      required this.price,
-      required this.description,
-      required this.image,
-      this.frequency = Frequency.month});
+      @JsonKey(name: 'provider_id') required this.providerId,
+      @JsonKey(name: 'start_date') required this.startDate,
+      @JsonKey(ignore: true) this.provider,
+      @JsonKey(name: 'user_id') required this.subscriberId});
 
   factory _$_Subscription.fromJson(Map<String, dynamic> json) =>
       _$$_SubscriptionFromJson(json);
@@ -253,28 +207,21 @@ class _$_Subscription implements _Subscription {
   @override
   final int id;
   @override
-  final int provider_id;
+  @JsonKey(name: 'provider_id')
+  final int providerId;
   @override
-  final String name;
+  @JsonKey(name: 'start_date')
+  final DateTime startDate;
   @override
-
-  /// brand color in hex
-  final int color;
+  @JsonKey(ignore: true)
+  final SubscriptionProvider? provider;
   @override
-  final String owner;
-  @override
-  final double price;
-  @override
-  final String description;
-  @override
-  final String image;
-  @JsonKey()
-  @override
-  final Frequency frequency;
+  @JsonKey(name: 'user_id')
+  final String subscriberId;
 
   @override
   String toString() {
-    return 'Subscription(id: $id, provider_id: $provider_id, name: $name, color: $color, owner: $owner, price: $price, description: $description, image: $image, frequency: $frequency)';
+    return 'Subscription(id: $id, providerId: $providerId, startDate: $startDate, provider: $provider, subscriberId: $subscriberId)';
   }
 
   @override
@@ -284,29 +231,21 @@ class _$_Subscription implements _Subscription {
             other is _Subscription &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
-                .equals(other.provider_id, provider_id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.owner, owner) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
+                .equals(other.providerId, providerId) &&
+            const DeepCollectionEquality().equals(other.startDate, startDate) &&
+            const DeepCollectionEquality().equals(other.provider, provider) &&
             const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality().equals(other.frequency, frequency));
+                .equals(other.subscriberId, subscriberId));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(provider_id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(owner),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(frequency));
+      const DeepCollectionEquality().hash(providerId),
+      const DeepCollectionEquality().hash(startDate),
+      const DeepCollectionEquality().hash(provider),
+      const DeepCollectionEquality().hash(subscriberId));
 
   @JsonKey(ignore: true)
   @override
@@ -321,15 +260,12 @@ class _$_Subscription implements _Subscription {
 
 abstract class _Subscription implements Subscription {
   const factory _Subscription(
-      {required int id,
-      required int provider_id,
-      required String name,
-      required int color,
-      required String owner,
-      required double price,
-      required String description,
-      required String image,
-      Frequency frequency}) = _$_Subscription;
+          {required int id,
+          @JsonKey(name: 'provider_id') required int providerId,
+          @JsonKey(name: 'start_date') required DateTime startDate,
+          @JsonKey(ignore: true) SubscriptionProvider? provider,
+          @JsonKey(name: 'user_id') required String subscriberId}) =
+      _$_Subscription;
 
   factory _Subscription.fromJson(Map<String, dynamic> json) =
       _$_Subscription.fromJson;
@@ -337,23 +273,17 @@ abstract class _Subscription implements Subscription {
   @override
   int get id;
   @override
-  int get provider_id;
+  @JsonKey(name: 'provider_id')
+  int get providerId;
   @override
-  String get name;
+  @JsonKey(name: 'start_date')
+  DateTime get startDate;
   @override
-
-  /// brand color in hex
-  int get color;
+  @JsonKey(ignore: true)
+  SubscriptionProvider? get provider;
   @override
-  String get owner;
-  @override
-  double get price;
-  @override
-  String get description;
-  @override
-  String get image;
-  @override
-  Frequency get frequency;
+  @JsonKey(name: 'user_id')
+  String get subscriberId;
   @override
   @JsonKey(ignore: true)
   _$SubscriptionCopyWith<_Subscription> get copyWith =>

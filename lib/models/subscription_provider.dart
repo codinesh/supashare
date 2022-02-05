@@ -7,15 +7,16 @@ part 'subscription_provider.g.dart';
 @freezed
 class SubscriptionProvider with _$SubscriptionProvider {
   const factory SubscriptionProvider(
-      {required String id,
+      {required int id,
       required String name,
 
       /// brand color in hex
-      required int color,
-      required String owner,
+      @JsonKey(name: 'brand_color') required int color,
+      @JsonKey(name: 'max_subscribers') required int maxSubscribers,
       required double price,
-      required String description,
-      required String image,
+      required String? description,
+      @JsonKey(name: 'logo_url') required String logo,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
       @Default(Frequency.month) Frequency frequency}) = _SubscriptionProvider;
 
   factory SubscriptionProvider.fromJson(Map<String, dynamic> json) => _$SubscriptionProviderFromJson(json);

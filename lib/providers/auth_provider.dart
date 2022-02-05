@@ -14,5 +14,10 @@ final authStateProvider = StateNotifierProvider<AuthStateNotifier, AuthState>((r
   return AuthStateNotifier(keyValueStorageService);
 });
 
-final subscriptionProvider = StateNotifierProvider<SubscriptionNotifier, List<Subscription>>((ref) => SubscriptionNotifier());
-final providersProvider = StateNotifierProvider<ProviderNotifier, List<SubscriptionProvider>>((ref) => ProviderNotifier());
+final providersProvider =
+    StateNotifierProvider<ProviderNotifier, List<SubscriptionProvider>>((ref) => ProviderNotifier());
+
+final subscriptionProvider = StateNotifierProvider<SubscriptionNotifier, List<Subscription>>((ref) {
+  var providers = ref.watch(providersProvider);
+  return SubscriptionNotifier(providers);
+});
