@@ -31,6 +31,7 @@ class _$SubscriptionProviderTearOff {
       required String? description,
       @JsonKey(name: 'logo_url') required String logo,
       @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(ignore: true) List<Subscription>? subscriptions,
       Frequency frequency = Frequency.month}) {
     return _SubscriptionProvider(
       id: id,
@@ -41,6 +42,7 @@ class _$SubscriptionProviderTearOff {
       description: description,
       logo: logo,
       createdAt: createdAt,
+      subscriptions: subscriptions,
       frequency: frequency,
     );
   }
@@ -69,6 +71,8 @@ mixin _$SubscriptionProvider {
   String get logo => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  List<Subscription>? get subscriptions => throw _privateConstructorUsedError;
   Frequency get frequency => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -91,6 +95,7 @@ abstract class $SubscriptionProviderCopyWith<$Res> {
       String? description,
       @JsonKey(name: 'logo_url') String logo,
       @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(ignore: true) List<Subscription>? subscriptions,
       Frequency frequency});
 }
 
@@ -113,6 +118,7 @@ class _$SubscriptionProviderCopyWithImpl<$Res>
     Object? description = freezed,
     Object? logo = freezed,
     Object? createdAt = freezed,
+    Object? subscriptions = freezed,
     Object? frequency = freezed,
   }) {
     return _then(_value.copyWith(
@@ -148,6 +154,10 @@ class _$SubscriptionProviderCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      subscriptions: subscriptions == freezed
+          ? _value.subscriptions
+          : subscriptions // ignore: cast_nullable_to_non_nullable
+              as List<Subscription>?,
       frequency: frequency == freezed
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
@@ -172,6 +182,7 @@ abstract class _$SubscriptionProviderCopyWith<$Res>
       String? description,
       @JsonKey(name: 'logo_url') String logo,
       @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(ignore: true) List<Subscription>? subscriptions,
       Frequency frequency});
 }
 
@@ -196,6 +207,7 @@ class __$SubscriptionProviderCopyWithImpl<$Res>
     Object? description = freezed,
     Object? logo = freezed,
     Object? createdAt = freezed,
+    Object? subscriptions = freezed,
     Object? frequency = freezed,
   }) {
     return _then(_SubscriptionProvider(
@@ -231,6 +243,10 @@ class __$SubscriptionProviderCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      subscriptions: subscriptions == freezed
+          ? _value.subscriptions
+          : subscriptions // ignore: cast_nullable_to_non_nullable
+              as List<Subscription>?,
       frequency: frequency == freezed
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
@@ -251,6 +267,7 @@ class _$_SubscriptionProvider implements _SubscriptionProvider {
       required this.description,
       @JsonKey(name: 'logo_url') required this.logo,
       @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(ignore: true) this.subscriptions,
       this.frequency = Frequency.month});
 
   factory _$_SubscriptionProvider.fromJson(Map<String, dynamic> json) =>
@@ -278,13 +295,16 @@ class _$_SubscriptionProvider implements _SubscriptionProvider {
   @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
+  @override
+  @JsonKey(ignore: true)
+  final List<Subscription>? subscriptions;
   @JsonKey()
   @override
   final Frequency frequency;
 
   @override
   String toString() {
-    return 'SubscriptionProvider(id: $id, name: $name, color: $color, maxSubscribers: $maxSubscribers, price: $price, description: $description, logo: $logo, createdAt: $createdAt, frequency: $frequency)';
+    return 'SubscriptionProvider(id: $id, name: $name, color: $color, maxSubscribers: $maxSubscribers, price: $price, description: $description, logo: $logo, createdAt: $createdAt, subscriptions: $subscriptions, frequency: $frequency)';
   }
 
   @override
@@ -302,6 +322,8 @@ class _$_SubscriptionProvider implements _SubscriptionProvider {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.logo, logo) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other.subscriptions, subscriptions) &&
             const DeepCollectionEquality().equals(other.frequency, frequency));
   }
 
@@ -316,6 +338,7 @@ class _$_SubscriptionProvider implements _SubscriptionProvider {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(logo),
       const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(subscriptions),
       const DeepCollectionEquality().hash(frequency));
 
   @JsonKey(ignore: true)
@@ -340,6 +363,7 @@ abstract class _SubscriptionProvider implements SubscriptionProvider {
       required String? description,
       @JsonKey(name: 'logo_url') required String logo,
       @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(ignore: true) List<Subscription>? subscriptions,
       Frequency frequency}) = _$_SubscriptionProvider;
 
   factory _SubscriptionProvider.fromJson(Map<String, dynamic> json) =
@@ -367,6 +391,9 @@ abstract class _SubscriptionProvider implements SubscriptionProvider {
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @override
+  @JsonKey(ignore: true)
+  List<Subscription>? get subscriptions;
   @override
   Frequency get frequency;
   @override

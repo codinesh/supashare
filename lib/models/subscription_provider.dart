@@ -17,6 +17,7 @@ class SubscriptionProvider with _$SubscriptionProvider {
       required String? description,
       @JsonKey(name: 'logo_url') required String logo,
       @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(ignore: true) List<Subscription>? subscriptions,
       @Default(Frequency.month) Frequency frequency}) = _SubscriptionProvider;
 
   factory SubscriptionProvider.fromJson(Map<String, dynamic> json) => _$SubscriptionProviderFromJson(json);

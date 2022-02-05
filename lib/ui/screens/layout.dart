@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supashare/providers/auth_provider.dart';
+import 'package:supashare/routes/routes.dart';
 import '../../routes/app_router.dart';
 
 class Layout extends HookConsumerWidget {
@@ -116,10 +117,10 @@ class Layout extends HookConsumerWidget {
               AppRouter.popUntilRoot();
               break;
             case 1:
-              AppRouter.pushNamed('/providers');
+              AppRouter.pushNamed(Routes.ProvidersScreenRoute);
               break;
             case 2:
-              AppRouter.pushNamed('/mysubscriptions');
+              AppRouter.pushNamed(Routes.ProfileScreenRoute);
               break;
             default:
               AppRouter.popUntilRoot();

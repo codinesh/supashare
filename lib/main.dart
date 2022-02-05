@@ -11,12 +11,12 @@ Future<void> main() async {
   await KeyValueStorageBase.init();
 
   await Supabase.initialize(
-      url: 'https://dodbjstswbfavxtnmmqi.supabase.co',
-      anonKey:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzM4OTY5OSwiZXhwIjoxOTU4OTY1Njk5fQ.SwmH975eUufDEyePyNczrPaZ7xf-YU5iPsZ9-a2JhPA',
-      authCallbackUrlHostname: 'login-callback', // optional
-      debug: true // optional
-      );
+    url: 'https://dodbjstswbfavxtnmmqi.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzM4OTY5OSwiZXhwIjoxOTU4OTY1Njk5fQ.SwmH975eUufDEyePyNczrPaZ7xf-YU5iPsZ9-a2JhPA',
+    authCallbackUrlHostname: 'login-callback',
+    debug: true,
+  );
 
   runApp(const ProviderScope(child: MyApp()));
 }

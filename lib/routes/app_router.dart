@@ -1,16 +1,15 @@
 // ignore_for_file: constant_identifier_names
 import 'package:flutter/material.dart';
-import 'package:supashare/models/subscription_provider.dart';
 import 'package:supashare/ui/screens/providerdetails.dart';
-import 'package:supashare/ui/screens/providers.dart';
-import 'package:supashare/ui/screens/subscriptiondetails.dart';
 
 import '../models/subscription.dart';
+import '../models/subscription_provider.dart';
 import '../ui/screens/appstartup.dart';
 import '../ui/screens/forgotpassword.dart';
 import '../ui/screens/home.dart';
 import '../ui/screens/layout.dart';
 import '../ui/screens/login.dart';
+import '../ui/screens/profile.dart';
 import '../ui/screens/register.dart';
 import 'routes.dart';
 
@@ -61,20 +60,15 @@ class AppRouter {
           builder: (_) => Layout(child: const HomeScreen()),
           settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
         );
-      case Routes.SubscriptionDetailScreenRoute:
-        return MaterialPageRoute<dynamic>(
-          builder: (_) => Layout(child: SubscriptionDetail(settings.arguments as Subscription)),
-          settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
-        );
-      case Routes.ProvidersScreenRoute:
-        return MaterialPageRoute(
-          builder: (_) => Layout(child: const ProvidersScreen()),
-          settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
-        );
       case Routes.ProviderDetailScreenRoute:
-        return MaterialPageRoute(
+        return MaterialPageRoute<dynamic>(
           builder: (_) => Layout(child: ProviderDetail(settings.arguments as SubscriptionProvider)),
-          settings: const RouteSettings(name: Routes.ProviderDetailScreenRoute),
+          settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
+        );
+      case Routes.ProfileScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => Layout(child: const ProfileScreen()),
+          settings: const RouteSettings(name: Routes.ProfileScreenRoute),
         );
       default:
         return _errorRoute(settings.name ?? '/');
