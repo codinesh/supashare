@@ -33,17 +33,18 @@ class HomeScreen extends HookConsumerWidget {
           ),
           const SizedBox(height: 14),
           Expanded(
-              child: Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: ListView.separated(
-                itemBuilder: (a, b) {
-                  return SubscriptionCard(subscriptions[b]);
-                },
-                separatorBuilder: (a, b) {
-                  return const SizedBox(height: 10);
-                },
-                itemCount: subscriptions.length),
-          ))
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: ListView.separated(
+                  itemBuilder: (a, b) {
+                    return SubscriptionCard(subscriptions[b]);
+                  },
+                  separatorBuilder: (a, b) {
+                    return const SizedBox(height: 10);
+                  },
+                  itemCount: subscriptions.length),
+            ),
+          )
         ],
       ),
     );

@@ -14,6 +14,8 @@ class Routes {
 
   static const String SubscriptionDetailScreenRoute = '/subscription-detail';
 
+  static const String ProviderDetailScreenRoute = '/provider-detail';
+
   static const String ProvidersScreenRoute = '/providers';
 
   static const String ForgotPasswordScreenRoute = '/forgot-password-screen';

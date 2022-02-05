@@ -2,10 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:supashare/routes/routes.dart';
+import 'package:supashare/utils/constants.dart';
+import 'package:supashare/utils/extensions.dart';
 
 import '../models/subscription_provider.dart';
 import '../routes/app_router.dart';
-import '../utils/constants.dart';
 
 class ProviderCard extends StatelessWidget {
   SubscriptionProvider subscriptionProvider;
@@ -15,11 +16,11 @@ class ProviderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brandColor = Color(subscriptionProvider.color);
+    final brandColor = getColorFromString(subscriptionProvider.color);
     return InkWell(
       borderRadius: BorderRadius.circular(28),
       onTap: () {
-        AppRouter.pushNamed(Routes.SubscriptionDetailScreenRoute, args: subscriptionProvider);
+        AppRouter.pushNamed(Routes.ProviderDetailScreenRoute, args: subscriptionProvider);
       },
       child: Container(
         child: Padding(
@@ -77,28 +78,29 @@ class ProviderCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      height: 100,
-                      width: 100,
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          CircularProgressIndicator(
-                            value: rand / 100,
-                            color: brandColor,
-                            backgroundColor: brandColor.withOpacity(0.4),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              rand.toString() + '%',
-                              style: const TextStyle(fontSize: 32),
+                    if (MediaQuery.of(context).size.width > 400)
+                      Container(
+                        alignment: Alignment.center,
+                        height: 100,
+                        width: 100,
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            CircularProgressIndicator(
+                              value: rand / 100,
+                              color: brandColor,
+                              backgroundColor: brandColor.withOpacity(0.4),
                             ),
-                          )
-                        ],
+                            Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                rand.toString() + '%',
+                                style: const TextStyle(fontSize: 32),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -108,7 +110,10 @@ class ProviderCard extends StatelessWidget {
         height: 180,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(subscriptionProvider.logo), opacity: 0.051, scale: 3, repeat: ImageRepeat.repeat),
+              image: AssetImage('assets/' + subscriptionProvider.logo),
+              opacity: 0.051,
+              scale: 3,
+              repeat: ImageRepeat.repeat),
           borderRadius: BorderRadius.circular(28),
           color: Constants.primaryColor.withOpacity(0.5),
         ),

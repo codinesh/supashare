@@ -25,7 +25,7 @@ class _$SubscriptionProviderTearOff {
   _SubscriptionProvider call(
       {required int id,
       required String name,
-      @JsonKey(name: 'brand_color') required int color,
+      @JsonKey(name: 'brand_color') required String color,
       @JsonKey(name: 'max_subscribers') required int maxSubscribers,
       required double price,
       required String? description,
@@ -60,7 +60,7 @@ mixin _$SubscriptionProvider {
 
   /// brand color in hex
   @JsonKey(name: 'brand_color')
-  int get color => throw _privateConstructorUsedError;
+  String get color => throw _privateConstructorUsedError;
   @JsonKey(name: 'max_subscribers')
   int get maxSubscribers => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
@@ -85,7 +85,7 @@ abstract class $SubscriptionProviderCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      @JsonKey(name: 'brand_color') int color,
+      @JsonKey(name: 'brand_color') String color,
       @JsonKey(name: 'max_subscribers') int maxSubscribers,
       double price,
       String? description,
@@ -127,7 +127,7 @@ class _$SubscriptionProviderCopyWithImpl<$Res>
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       maxSubscribers: maxSubscribers == freezed
           ? _value.maxSubscribers
           : maxSubscribers // ignore: cast_nullable_to_non_nullable
@@ -166,7 +166,7 @@ abstract class _$SubscriptionProviderCopyWith<$Res>
   $Res call(
       {int id,
       String name,
-      @JsonKey(name: 'brand_color') int color,
+      @JsonKey(name: 'brand_color') String color,
       @JsonKey(name: 'max_subscribers') int maxSubscribers,
       double price,
       String? description,
@@ -210,7 +210,7 @@ class __$SubscriptionProviderCopyWithImpl<$Res>
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       maxSubscribers: maxSubscribers == freezed
           ? _value.maxSubscribers
           : maxSubscribers // ignore: cast_nullable_to_non_nullable
@@ -264,7 +264,7 @@ class _$_SubscriptionProvider implements _SubscriptionProvider {
 
   /// brand color in hex
   @JsonKey(name: 'brand_color')
-  final int color;
+  final String color;
   @override
   @JsonKey(name: 'max_subscribers')
   final int maxSubscribers;
@@ -334,7 +334,7 @@ abstract class _SubscriptionProvider implements SubscriptionProvider {
   const factory _SubscriptionProvider(
       {required int id,
       required String name,
-      @JsonKey(name: 'brand_color') required int color,
+      @JsonKey(name: 'brand_color') required String color,
       @JsonKey(name: 'max_subscribers') required int maxSubscribers,
       required double price,
       required String? description,
@@ -353,7 +353,7 @@ abstract class _SubscriptionProvider implements SubscriptionProvider {
 
   /// brand color in hex
   @JsonKey(name: 'brand_color')
-  int get color;
+  String get color;
   @override
   @JsonKey(name: 'max_subscribers')
   int get maxSubscribers;

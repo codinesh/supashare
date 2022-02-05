@@ -11,7 +11,7 @@ class SubscriptionProvider with _$SubscriptionProvider {
       required String name,
 
       /// brand color in hex
-      @JsonKey(name: 'brand_color') required int color,
+      @JsonKey(name: 'brand_color') required String color,
       @JsonKey(name: 'max_subscribers') required int maxSubscribers,
       required double price,
       required String? description,

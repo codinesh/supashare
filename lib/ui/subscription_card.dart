@@ -6,6 +6,7 @@ import 'package:supashare/routes/routes.dart';
 import '../models/subscription.dart';
 import '../routes/app_router.dart';
 import '../utils/constants.dart';
+import '../utils/extensions.dart';
 
 class SubscriptionCard extends StatelessWidget {
   Subscription subscription;
@@ -15,7 +16,8 @@ class SubscriptionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brandColor = Color(subscription.provider!.color);
+    final brandColor = getColorFromString(subscription.provider!.color);
+
     return InkWell(
       borderRadius: BorderRadius.circular(28),
       onTap: () {
@@ -41,6 +43,7 @@ class SubscriptionCard extends StatelessWidget {
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -77,28 +80,29 @@ class SubscriptionCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      height: 100,
-                      width: 100,
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          CircularProgressIndicator(
-                            value: rand / 100,
-                            color: brandColor,
-                            backgroundColor: brandColor.withOpacity(0.4),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              rand.toString() + '%',
-                              style: const TextStyle(fontSize: 32),
+                    if (MediaQuery.of(context).size.width > 400)
+                      Container(
+                        alignment: Alignment.center,
+                        height: 100,
+                        width: 100,
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            CircularProgressIndicator(
+                              value: rand / 100,
+                              color: brandColor,
+                              backgroundColor: brandColor.withOpacity(0.4),
                             ),
-                          )
-                        ],
+                            Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                rand.toString() + '%',
+                                style: const TextStyle(fontSize: 32),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

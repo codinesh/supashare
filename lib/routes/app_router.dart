@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 import 'package:flutter/material.dart';
+import 'package:supashare/models/subscription_provider.dart';
+import 'package:supashare/ui/screens/providerdetails.dart';
 import 'package:supashare/ui/screens/providers.dart';
 import 'package:supashare/ui/screens/subscriptiondetails.dart';
 
@@ -68,6 +70,11 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => Layout(child: const ProvidersScreen()),
           settings: const RouteSettings(name: Routes.WelcomeScreenRoute),
+        );
+      case Routes.ProviderDetailScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => Layout(child: ProviderDetail(settings.arguments as SubscriptionProvider)),
+          settings: const RouteSettings(name: Routes.ProviderDetailScreenRoute),
         );
       default:
         return _errorRoute(settings.name ?? '/');
