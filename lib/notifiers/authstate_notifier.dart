@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supashare/routes/app_router.dart';
 
 import '../models/authstate.dart';
 import '../services/local_storage/key_value_storage_service.dart';
@@ -10,8 +12,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   User? _currentUser;
   late String _password;
 
-  AuthStateNotifier(KeyValueStorageService keyValueStorageServiceProvider)
-      : super(const AuthState.unauthenticated()) {
+  AuthStateNotifier(KeyValueStorageService keyValueStorageServiceProvider) : super(const AuthState.unauthenticated()) {
     _keyValueStorageService = keyValueStorageServiceProvider;
     init();
   }
@@ -74,6 +75,23 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       _keyValueStorageService.setAuthToken(result.data!.accessToken);
     } else {
       state = AuthState.error(result.error?.message ?? '');
+    }
+  }
+
+  Future<String?> updateName(String text) async {
+    final updates = {
+      'id': 'bc0958ba-fbae-450d-be6f-1fe89b2b4737',
+      'username': text,
+      'website': text,
+      'updated_at': DateTime.now().toIso8601String(),
+    };
+
+    var update = await supabase.from('profile').upsert(updates).execute();
+
+    if (update.error != null) {
+      return update.error?.message ?? 'Error';
+    } else {
+      return null;
     }
   }
 }

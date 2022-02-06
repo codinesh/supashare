@@ -17,8 +17,8 @@ class ProviderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final brandColor = getColorFromString(subscriptionProvider.color);
-    var availableSlots = subscriptionProvider.maxSubscribers - (subscriptionProvider.subscriptions?.length ?? 0);
-    var owner = subscriptionProvider.subscriptions.length > 0
+    var availableSlots = subscriptionProvider.maxSubscribers - (subscriptionProvider.subscriptions.length);
+    var owner = subscriptionProvider.subscriptions.isNotEmpty
         ? subscriptionProvider.subscriptions.firstWhere((subscription) => true)
         : null;
 

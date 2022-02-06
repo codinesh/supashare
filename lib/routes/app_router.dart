@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:supashare/ui/screens/providerdetails.dart';
 
-import '../models/subscription.dart';
 import '../models/subscription_provider.dart';
 import '../ui/screens/appstartup.dart';
 import '../ui/screens/forgotpassword.dart';
@@ -67,7 +66,7 @@ class AppRouter {
         );
       case Routes.ProfileScreenRoute:
         return MaterialPageRoute(
-          builder: (_) => Layout(child: const ProfileScreen()),
+          builder: (_) => Layout(child: ProfileScreen()),
           settings: const RouteSettings(name: Routes.ProfileScreenRoute),
         );
       default:
