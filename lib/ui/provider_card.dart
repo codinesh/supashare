@@ -19,7 +19,7 @@ class ProviderCard extends StatelessWidget {
     final brandColor = getColorFromString(subscriptionProvider.color);
     var availableSlots = subscriptionProvider.maxSubscribers - (subscriptionProvider.subscriptions.length);
     var owner = subscriptionProvider.subscriptions.isNotEmpty
-        ? subscriptionProvider.subscriptions.firstWhere((subscription) => true)
+        ? subscriptionProvider.subscriptions.firstWhere((subscription) => subscription.isOwner ?? false).subscriberId
         : null;
 
     return InkWell(
@@ -65,7 +65,7 @@ class ProviderCard extends StatelessWidget {
                             height: 4,
                           ),
                           Text(
-                            'by ' + (owner?.subscriberId.substring(0, 24) ?? ''),
+                            'by ' + (owner?.substring(0, 24) ?? ''),
                             style: const TextStyle(fontSize: 18),
                             overflow: TextOverflow.ellipsis,
                           ),

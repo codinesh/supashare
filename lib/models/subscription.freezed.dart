@@ -25,12 +25,14 @@ class _$SubscriptionTearOff {
   _Subscription call(
       {required int id,
       @JsonKey(name: 'provider_id') required int providerId,
+      @JsonKey(name: 'is_owner') bool? isOwner,
       @JsonKey(name: 'start_date') required DateTime startDate,
       @JsonKey(ignore: true) SubscriptionProvider? provider,
       @JsonKey(name: 'user_id') required String subscriberId}) {
     return _Subscription(
       id: id,
       providerId: providerId,
+      isOwner: isOwner,
       startDate: startDate,
       provider: provider,
       subscriberId: subscriberId,
@@ -50,6 +52,8 @@ mixin _$Subscription {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'provider_id')
   int get providerId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_owner')
+  bool? get isOwner => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_date')
   DateTime get startDate => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -71,6 +75,7 @@ abstract class $SubscriptionCopyWith<$Res> {
   $Res call(
       {int id,
       @JsonKey(name: 'provider_id') int providerId,
+      @JsonKey(name: 'is_owner') bool? isOwner,
       @JsonKey(name: 'start_date') DateTime startDate,
       @JsonKey(ignore: true) SubscriptionProvider? provider,
       @JsonKey(name: 'user_id') String subscriberId});
@@ -90,6 +95,7 @@ class _$SubscriptionCopyWithImpl<$Res> implements $SubscriptionCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? providerId = freezed,
+    Object? isOwner = freezed,
     Object? startDate = freezed,
     Object? provider = freezed,
     Object? subscriberId = freezed,
@@ -103,6 +109,10 @@ class _$SubscriptionCopyWithImpl<$Res> implements $SubscriptionCopyWith<$Res> {
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
               as int,
+      isOwner: isOwner == freezed
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as bool?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -140,6 +150,7 @@ abstract class _$SubscriptionCopyWith<$Res>
   $Res call(
       {int id,
       @JsonKey(name: 'provider_id') int providerId,
+      @JsonKey(name: 'is_owner') bool? isOwner,
       @JsonKey(name: 'start_date') DateTime startDate,
       @JsonKey(ignore: true) SubscriptionProvider? provider,
       @JsonKey(name: 'user_id') String subscriberId});
@@ -162,6 +173,7 @@ class __$SubscriptionCopyWithImpl<$Res> extends _$SubscriptionCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? providerId = freezed,
+    Object? isOwner = freezed,
     Object? startDate = freezed,
     Object? provider = freezed,
     Object? subscriberId = freezed,
@@ -175,6 +187,10 @@ class __$SubscriptionCopyWithImpl<$Res> extends _$SubscriptionCopyWithImpl<$Res>
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
               as int,
+      isOwner: isOwner == freezed
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as bool?,
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -197,6 +213,7 @@ class _$_Subscription implements _Subscription {
   const _$_Subscription(
       {required this.id,
       @JsonKey(name: 'provider_id') required this.providerId,
+      @JsonKey(name: 'is_owner') this.isOwner,
       @JsonKey(name: 'start_date') required this.startDate,
       @JsonKey(ignore: true) this.provider,
       @JsonKey(name: 'user_id') required this.subscriberId});
@@ -210,6 +227,9 @@ class _$_Subscription implements _Subscription {
   @JsonKey(name: 'provider_id')
   final int providerId;
   @override
+  @JsonKey(name: 'is_owner')
+  final bool? isOwner;
+  @override
   @JsonKey(name: 'start_date')
   final DateTime startDate;
   @override
@@ -221,7 +241,7 @@ class _$_Subscription implements _Subscription {
 
   @override
   String toString() {
-    return 'Subscription(id: $id, providerId: $providerId, startDate: $startDate, provider: $provider, subscriberId: $subscriberId)';
+    return 'Subscription(id: $id, providerId: $providerId, isOwner: $isOwner, startDate: $startDate, provider: $provider, subscriberId: $subscriberId)';
   }
 
   @override
@@ -232,6 +252,7 @@ class _$_Subscription implements _Subscription {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.providerId, providerId) &&
+            const DeepCollectionEquality().equals(other.isOwner, isOwner) &&
             const DeepCollectionEquality().equals(other.startDate, startDate) &&
             const DeepCollectionEquality().equals(other.provider, provider) &&
             const DeepCollectionEquality()
@@ -243,6 +264,7 @@ class _$_Subscription implements _Subscription {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(providerId),
+      const DeepCollectionEquality().hash(isOwner),
       const DeepCollectionEquality().hash(startDate),
       const DeepCollectionEquality().hash(provider),
       const DeepCollectionEquality().hash(subscriberId));
@@ -262,6 +284,7 @@ abstract class _Subscription implements Subscription {
   const factory _Subscription(
           {required int id,
           @JsonKey(name: 'provider_id') required int providerId,
+          @JsonKey(name: 'is_owner') bool? isOwner,
           @JsonKey(name: 'start_date') required DateTime startDate,
           @JsonKey(ignore: true) SubscriptionProvider? provider,
           @JsonKey(name: 'user_id') required String subscriberId}) =
@@ -275,6 +298,9 @@ abstract class _Subscription implements Subscription {
   @override
   @JsonKey(name: 'provider_id')
   int get providerId;
+  @override
+  @JsonKey(name: 'is_owner')
+  bool? get isOwner;
   @override
   @JsonKey(name: 'start_date')
   DateTime get startDate;
